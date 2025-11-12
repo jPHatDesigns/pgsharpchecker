@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PGSharp Version Checker</string>
+    
+    <!-- Main Screen -->
+    <string name="logo_description">App Logo</string>
+    <string name="installed_version">Installed Version: Checking…</string>
+    <string name="latest_version">Latest Version: Not checked yet</string>
+    <string name="status_ready">Ready to check</string>
+    <string name="btn_check_now">Check for Updates Now</string>
+    <string name="btn_enable_auto">Enable Automatic Checking</string>
+    <string name="btn_auto_enabled">Automatic Checking Enabled</string>
+    <string name="note_auto_check">Note: Automatic checks run every 12 hours in the background</string>
+    <string name="disclaimer">Disclaimer: This app is not affiliated with, endorsed by, or connected to Niantic, Pokemon Go, or PGSharp. It is an independent tool created for informational purposes only.</string>
+    
+    <!-- Status Messages -->
+    <string name="installed_pokemon_go">Installed Pokemon Go: %1$s</string>
+    <string name="latest_on_pgsharp">Latest on PGSharp: %1$s</string>
+    <string name="pokemon_go_not_found">Pokemon Go not found - Searching…</string>
+    <string name="pokemon_go_not_installed">Pokemon Go not installed</string>
+    <string name="checking_updates">Checking for updates…</string>
+    <string name="checking">Checking…</string>
+    <string name="check_failed">Check failed. Please try again.</string>
+    <string name="version_matches">Your Pokemon Go version matches PGSharp!</string>
+    <string name="newer_version_available">Newer version available! Your Pokemon Go: %1$s → PGSharp supports: %2$s</string>
+    <string name="auto_check_enabled_status">Auto-check enabled: Comparing versions every 12 hours</string>
+    <string name="auto_check_disabled_status">Auto-check disabled. Use \'Check Now\' for manual checks.</string>
+    
+    <!-- Toast Messages -->
+    <string name="pokemon_go_not_found_toast">Pokemon Go app not found on device</string>
+    <string name="found_packages">Found %1$d related package(s). Check the screen!</string>
+    <string name="auto_check_enabled_toast">Automatic checking enabled (every 12 hours)</string>
+    <string name="auto_check_disabled_toast">Automatic checking disabled</string>
+    <string name="no_pokemon_go_found">No Pokemon Go related apps found</string>
+    <string name="found_packages_text">Found these packages:\n%1$s</string>
+</resources>
