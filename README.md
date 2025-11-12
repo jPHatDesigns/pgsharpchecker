@@ -13,10 +13,10 @@ An Android app that monitors your installed Pokemon Go version and compares it a
 ## Screenshots
 
 <p align="center">
-<img src="screenshots/permissions.png" width="250" alt="Permissions"/>
-  <img src="screenshots/checking.png" width="250" alt="Checking Version"/>
-  <img src="screenshots/autooff.png" width="250" alt="Auto Off"/>
-  <img src="screenshots/autoon.png" width="250" alt="Auto On"/>
+  <img src="screenshots/permissions.jpg" width="250" alt="Permissions"/>
+  <img src="screenshots/checking.jpg" width="250" alt="Checking Version"/>
+  <img src="screenshots/autooff.jpg" width="250" alt="Auto Off"/>
+  <img src="screenshots/autoon.jpg" width="250" alt="Auto On"/>
 </p>
 
 ## How It Works
