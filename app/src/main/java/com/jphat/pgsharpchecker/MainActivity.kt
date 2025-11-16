@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvInstalledVersion: TextView
     private lateinit var tvLatestVersion: TextView
     private lateinit var tvStatus: TextView
+    private lateinit var tvLastChecked: TextView
     private lateinit var btnCheckNow: Button
     private lateinit var btnEnableAutoCheck: Button
     
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         private const val QUERY_PACKAGES_PERMISSION_CODE = 101
         private const val PREFS_NAME = "PGSharpCheckerPrefs"
         private const val KEY_AUTO_CHECK_ENABLED = "auto_check_enabled"
+        private const val KEY_LAST_CHECK_TIME = "last_check_time"
     }
     
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         tvInstalledVersion = findViewById(R.id.tvInstalledVersion)
         tvLatestVersion = findViewById(R.id.tvLatestVersion)
         tvStatus = findViewById(R.id.tvStatus)
+        tvLastChecked = findViewById(R.id.tvLastChecked)
         btnCheckNow = findViewById(R.id.btnCheckNow)
         btnEnableAutoCheck = findViewById(R.id.btnEnableAutoCheck)
         
@@ -61,6 +64,9 @@ class MainActivity : AppCompatActivity() {
         
         // Update button appearance based on state
         updateAutoCheckButton()
+        
+        // Display last check time
+        displayLastCheckTime()
         
         // Manual check button
         btnCheckNow.setOnClickListener {
@@ -131,6 +137,10 @@ class MainActivity : AppCompatActivity() {
                             } else {
                                 tvStatus.text = getString(R.string.version_matches)
                             }
+                            
+                            // Save and display last check time
+                            saveLastCheckTime()
+                            displayLastCheckTime()
                         }
                         WorkInfo.State.FAILED -> {
                             tvStatus.text = getString(R.string.check_failed)
@@ -182,6 +192,36 @@ class MainActivity : AppCompatActivity() {
         val prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
         prefs.edit().putBoolean(KEY_AUTO_CHECK_ENABLED, enabled).apply()
         isAutoCheckEnabled = enabled
+    }
+    
+    private fun saveLastCheckTime() {
+        val prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+        prefs.edit().putLong(KEY_LAST_CHECK_TIME, System.currentTimeMillis()).apply()
+    }
+    
+    private fun displayLastCheckTime() {
+        val prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+        val lastCheckTime = prefs.getLong(KEY_LAST_CHECK_TIME, 0)
+        
+        if (lastCheckTime == 0L) {
+            tvLastChecked.text = getString(R.string.never_checked)
+        } else {
+            val timeAgo = getTimeAgo(lastCheckTime)
+            tvLastChecked.text = getString(R.string.last_checked, timeAgo)
+        }
+    }
+    
+    private fun getTimeAgo(timeMillis: Long): String {
+        val now = System.currentTimeMillis()
+        val diff = now - timeMillis
+        
+        return when {
+            diff < 60000 -> "just now"
+            diff < 3600000 -> "${diff / 60000} minutes ago"
+            diff < 86400000 -> "${diff / 3600000} hours ago"
+            diff < 604800000 -> "${diff / 86400000} days ago"
+            else -> "${diff / 604800000} weeks ago"
+        }
     }
     
     private fun updateAutoCheckButton() {

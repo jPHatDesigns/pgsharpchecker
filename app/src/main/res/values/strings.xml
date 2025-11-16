@@ -25,6 +25,8 @@
     <string name="newer_version_available">Newer version available! Your Pokemon Go: %1$s → PGSharp supports: %2$s</string>
     <string name="auto_check_enabled_status">Auto-check enabled: Comparing versions every 12 hours</string>
     <string name="auto_check_disabled_status">Auto-check disabled. Use \'Check Now\' for manual checks.</string>
+    <string name="never_checked">Never checked</string>
+    <string name="last_checked">Last checked: %1$s</string>
     
     <!-- Toast Messages -->
     <string name="pokemon_go_not_found_toast">Pokemon Go app not found on device</string>
