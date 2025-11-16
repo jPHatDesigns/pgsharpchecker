@@ -6,13 +6,11 @@
     <color name="accent">#4CAF50</color>
     
     <color name="background_light">#FFFFFF</color>
-    <color name="surface_light">#F5F5F5</color>
     <color name="text_primary_light">#212121</color>
     <color name="text_secondary_light">#666666</color>
     
     <!-- Dark Theme Colors -->
     <color name="background_dark">#121212</color>
-    <color name="surface_dark">#1E1E1E</color>
     <color name="text_primary_dark">#FFFFFF</color>
     <color name="text_secondary_dark">#B0B0B0</color>
     

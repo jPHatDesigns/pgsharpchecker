@@ -5,7 +5,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
+import androidx.core.net.toUri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -39,7 +39,7 @@ object NotificationHelper {
         createNotificationChannel(context)
         
         // Intent to open PGSharp website for download
-        val websiteIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.pgsharp.com"))
+        val websiteIntent = Intent(Intent.ACTION_VIEW, "https://www.pgsharp.com".toUri())
         val pendingIntent = PendingIntent.getActivity(
             context,
             0,
@@ -62,8 +62,12 @@ object NotificationHelper {
             .build()
         
         // Show notification
-        with(NotificationManagerCompat.from(context)) {
-            notify(NOTIFICATION_ID, notification)
+        try {
+            with(NotificationManagerCompat.from(context)) {
+                notify(NOTIFICATION_ID, notification)
+            }
+        } catch (e: SecurityException) {
+            // Permission not granted, silently fail
         }
     }
     
@@ -81,8 +85,12 @@ object NotificationHelper {
             .setAutoCancel(true)
             .build()
         
-        with(NotificationManagerCompat.from(context)) {
-            notify(NOTIFICATION_ID + 1, notification)
+        try {
+            with(NotificationManagerCompat.from(context)) {
+                notify(NOTIFICATION_ID + 1, notification)
+            }
+        } catch (e: SecurityException) {
+            // Permission not granted, silently fail
         }
     }
 }
